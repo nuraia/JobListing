@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:3000")
 public class PostController {
 
     @Autowired
@@ -17,7 +18,7 @@ public class PostController {
     @Autowired
     SearchRepo srepo;
 
-    @GetMapping("/posts")
+    @GetMapping("/allPosts")
     public List<Post> getAllPosts()
     {
         return repo.findAll();
