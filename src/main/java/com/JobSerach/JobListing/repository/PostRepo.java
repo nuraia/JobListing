@@ -1,4 +1,4 @@
-package com.JobSerach.JobListing;
+package com.JobSerach.JobListing.repository;
 
 import com.JobSerach.JobListing.model.Post;
 import org.springframework.data.mongodb.repository.MongoRepository;

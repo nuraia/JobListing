@@ -1,12 +1,10 @@
 package com.JobSerach.JobListing.controller;
 
-import com.JobSerach.JobListing.PostRepo;
+import com.JobSerach.JobListing.repository.PostRepo;
 import com.JobSerach.JobListing.model.Post;
+import com.JobSerach.JobListing.repository.SearchRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,10 +14,19 @@ public class PostController {
     @Autowired
     PostRepo repo;
 
+    @Autowired
+    SearchRepo srepo;
+
     @GetMapping("/posts")
     public List<Post> getAllPosts()
     {
         return repo.findAll();
+    }
+
+    @GetMapping("/posts/{txt}")
+    public List<Post> search(@PathVariable String txt)
+    {
+        return srepo.findByText(txt);
     }
 
     @PostMapping("/post")
